@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ku's Laundromat</title>
+  <meta name="description" content="Ku's Laundromat in Oakland Gardens, NY. View pricing, location, reviews, and tap to call for help." />
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #56627a;
+      --brand: #2f6fed;
+      --brandDark: #1d4fb3;
+      --accent: #e9f0ff;
+      --border: #dbe4f3;
+      --shadow: 0 12px 30px rgba(23, 32, 51, 0.08);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 248, 252, 0.88);
+      border-bottom: 1px solid rgba(219, 228, 243, 0.85);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .navLinks {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .navLinks a {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .ctaPrimary {
+      background: var(--brand);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .ctaPrimary:hover {
+      background: var(--brandDark);
+    }
+
+    .ctaSecondary {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 52px 0 28px;
+    }
+
+    .heroGrid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .heroCard,
+    .panel,
+    .priceCard,
+    .reviewCard,
+    .infoCard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .heroCard {
+      padding: 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--brandDark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 24px;
+      max-width: 58ch;
+    }
+
+    .heroActions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .stat {
+      background: #fbfcff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .infoRow {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .infoRow:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .label {
+      display: block;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .value {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .sectionHead {
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+    }
+
+    .sectionText {
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .priceGrid,
+    .reviewGrid,
+    .features {
+      display: grid;
+      gap: 16px;
+    }
+
+    .priceGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .priceCard {
+      padding: 22px;
+    }
+
+    .priceCard h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .priceValue {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 8px 0 10px;
+    }
+
+    .tiny {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .features {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 12px;
+    }
+
+    .infoCard {
+      padding: 20px;
+    }
+
+    .mapWrap {
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      display: block;
+    }
+
+    .reviewGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .reviewCard {
+      padding: 22px;
+    }
+
+    .stars {
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      color: #f5a623;
+      margin-bottom: 10px;
+    }
+
+    .reviewName {
+      font-weight: 700;
+      margin-top: 14px;
+    }
+
+    .reviewNote {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .reviewActions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .footer {
+      padding: 36px 0 48px;
+      color: var(--muted);
+    }
+
+    .footerBox {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .heroGrid,
+      .priceGrid,
+      .reviewGrid,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .navLinks {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .heroCard,
+      .panel {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a href="#home" class="brand">Ku's Laundromat</a>
+      <nav class="navLinks" aria-label="Main navigation">
+        <a href="#pricing">Pricing</a>
+        <a href="#location">Location</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a class="cta ctaPrimary" href="tel:+17183011991">Call Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div class="heroCard">
+          <div class="eyebrow">Clean. Fast. Local.</div>
+          <h1>Simple laundry service with quick access on phone and desktop.</h1>
+          <p class="lead">
+            Ku's Laundromat gives customers an easy way to find your location, tap to call, check pricing, and leave feedback. This layout is built to feel clear on mobile while still looking polished on a full screen.
+          </p>
+          <div class="heroActions">
+            <a class="cta ctaPrimary" href="tel:+17183011991">Tap to Call</a>
+            <a class="cta ctaSecondary" href="#location">Get Directions</a>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>Phone friendly</strong>
+              <span>Large buttons and clean sections for fast use on smaller screens.</span>
+            </div>
+            <div class="stat">
+              <strong>Easy to update</strong>
+              <span>Address, phone, pricing, and reviews can all be edited in one file.</span>
+            </div>
+            <div class="stat">
+              <strong>Built for trust</strong>
+              <span>Clear contact info, map, and customer feedback all in one place.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="Business information">
+          <div class="infoRow">
+            <span class="label">Business Name</span>
+            <span class="value">Ku's Laundromat</span>
+          </div>
+          <div class="infoRow">
+            <span class="label">Address</span>
+            <span class="value">78 33 Springfield Blvd, Oakland Gardens, NY 11364</span>
+          </div>
+          <div class="infoRow">
+            <span class="label">Phone</span>
+            <a class="value" href="tel:+17183011991">+1 718 301 1991</a>
+          </div>
+          <div class="infoRow">
+            <span class="label">Hours</span>
+            <span class="value">Add your store hours here</span>
+          </div>
+          <div class="infoRow">
+            <span class="label">Quick actions</span>
+            <div class="heroActions" style="margin: 10px 0 0;">
+              <a class="cta ctaPrimary" href="tel:+17183011991">Call Store</a>
+              <a class="cta ctaSecondary" href="https://www.google.com/maps/search/?api=1&query=78-33+Springfield+Blvd,+Oakland+Gardens,+NY+11364" target="_blank" rel="noreferrer">Open Map</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="wrap">
+        <div class="sectionHead">
+          <h2>Pricing</h2>
+          <p class="sectionText">These are sample pricing cards so the page is ready now. Replace them with your real prices once you have the final list.</p>
+        </div>
+        <div class="priceGrid">
+          <article class="priceCard">
+            <h3>Self Service Wash</h3>
+            <div class="priceValue">$4.50+</div>
+            <p class="tiny">Starting rate for standard wash machines. Adjust by machine size.</p>
+          </article>
+          <article class="priceCard">
+            <h3>Dryers</h3>
+            <div class="priceValue">$1.00+</div>
+            <p class="tiny">Starting rate for dryer use. Add your actual timing and load details.</p>
+          </article>
+          <article class="priceCard">
+            <h3>Wash and Fold</h3>
+            <div class="priceValue">$1.50 lb</div>
+            <p class="tiny">Example only. Replace with your actual service rate and minimum order.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="sectionHead">
+          <h2>Why this layout works better</h2>
+          <p class="sectionText">The original site uses a plain directory style layout. This version keeps the same useful information but makes it easier to scan, easier to call from a phone, and easier to grow later with photos, hours, and service details.</p>
+        </div>
+        <div class="features">
+          <div class="infoCard">
+            <h3>Fast contact access</h3>
+            <p class="tiny">The call button appears at the top and again in the main content so customers do not need to search for it.</p>
+          </div>
+          <div class="infoCard">
+            <h3>Clear location section</h3>
+            <p class="tiny">Address, directions, and the map are grouped together so visitors can act immediately.</p>
+          </div>
+          <div class="infoCard">
+            <h3>Review focused</h3>
+            <p class="tiny">The page can show selected customer comments while also sending people to your public review page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="wrap">
+        <div class="sectionHead">
+          <h2>Location</h2>
+          <p class="sectionText">Customers can use the embedded map below or open directions directly in Google Maps.</p>
+        </div>
+        <div class="mapWrap">
+          <iframe
+            title="Ku's Laundromat map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=78-33%20Springfield%20Blvd,%20Oakland%20Gardens,%20NY%2011364&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="wrap">
+        <div class="sectionHead">
+          <h2>Reviews</h2>
+          <p class="sectionText">For a static HTML site, the best approach is usually to show selected reviews here and send visitors to a public review page to leave new feedback.</p>
+        </div>
+        <div class="reviewGrid">
+          <article class="reviewCard">
+            <div class="stars">★★★★★</div>
+            <p>Clean machines, fast service, and an easy location to get to. I liked how simple everything felt from start to finish.</p>
+            <div class="reviewName">Customer review sample</div>
+            <div class="reviewNote">Replace with a real review later</div>
+          </article>
+          <article class="reviewCard">
+            <div class="stars">★★★★★</div>
+            <p>The staff was helpful and the place felt organized. It was easy to do laundry without a long wait.</p>
+            <div class="reviewName">Customer review sample</div>
+            <div class="reviewNote">Replace with a real review later</div>
+          </article>
+          <article class="reviewCard">
+            <div class="stars">★★★★★</div>
+            <p>Good neighborhood laundromat with simple pricing and quick access. The phone button on the site made it easy to call first.</p>
+            <div class="reviewName">Customer review sample</div>
+            <div class="reviewNote">Replace with a real review later</div>
+          </article>
+        </div>
+        <div class="reviewActions">
+          <a class="cta ctaPrimary" href="https://www.google.com/search?q=Ku%27s+Laundromat+Oakland+Gardens+NY" target="_blank" rel="noreferrer">Leave a Review</a>
+          <a class="cta ctaSecondary" href="tel:+17183011991">Call with Questions</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footerBox">
+      <div>
+        <strong>Ku's Laundromat</strong><br />
+        78 33 Springfield Blvd, Oakland Gardens, NY 11364<br />
+        <a href="tel:+17183011991">+1 718 301 1991</a>
+      </div>
+      <div class="heroActions" style="margin: 0;">
+        <a class="cta ctaPrimary" href="tel:+17183011991">Call Now</a>
+        <a class="cta ctaSecondary" href="https://www.google.com/maps/search/?api=1&query=78-33+Springfield+Blvd,+Oakland+Gardens,+NY+11364" target="_blank" rel="noreferrer">Directions</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
