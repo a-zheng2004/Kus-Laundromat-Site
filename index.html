@@ -11,8 +11,8 @@
       --card: #ffffff;
       --text: #172033;
       --muted: #56627a;
-      --brand: #2f6fed;
-      --brandDark: #1d4fb3;
+      --brand: #4f86ff;
+      --brandDark: #356ce0;
       --accent: #e9f0ff;
       --border: #dbe4f3;
       --shadow: 0 12px 30px rgba(23, 32, 51, 0.08);
@@ -62,6 +62,17 @@
       justify-content: space-between;
       gap: 16px;
       padding: 14px 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    section,
+    .hero,
+    .footer {
+      scroll-margin-top: 92px;
     }
 
     .brand {
@@ -280,6 +291,88 @@
       margin-top: 12px;
     }
 
+    .featureSectionText {
+      margin: 0;
+      color: var(--muted);
+      max-width: 120ch;
+    }
+
+    .features {
+      grid-template-columns: repeat(5, 1fr);
+      margin-top: 12px;
+    }
+
+    .featureCard {
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .featureCard::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--brand);
+      opacity: 0.9;
+    }
+
+    .featureIcon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: var(--brandDark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .featureCard h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .featureCard p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .modalFilters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .modalTitleWrap p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .infoCard {
       padding: 20px;
     }
@@ -349,6 +442,186 @@
       align-items: center;
     }
 
+    .reviewSummary {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .summaryCard {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .ratingNumber {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .ratingMeta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .ratingBars {
+      display: grid;
+      gap: 10px;
+    }
+
+    .ratingBarRow {
+      display: grid;
+      grid-template-columns: 50px 1fr 32px;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .ratingBarTrack {
+      height: 10px;
+      background: #edf2fa;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .ratingBarFill {
+      height: 100%;
+      background: #f5a623;
+      border-radius: 999px;
+    }
+
+    .reviewTopBar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .reviewScroller {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(280px, 340px);
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .reviewScroller::-webkit-scrollbar,
+    .modalReviewList::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+
+    .reviewScroller::-webkit-scrollbar-thumb,
+    .modalReviewList::-webkit-scrollbar-thumb {
+      background: #ced9ef;
+      border-radius: 999px;
+    }
+
+    .reviewCard {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .reviewDate {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+
+    .reviewText {
+      margin: 12px 0 16px;
+    }
+
+    .reviewFooter {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .reviewControls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .reviewSelect {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 12px 16px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 16, 28, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modalBody {
+      width: min(950px, 100%);
+      max-height: 85vh;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .modalHead {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modalReviewList {
+      display: grid;
+      gap: 16px;
+      overflow-y: auto;
+      max-height: calc(85vh - 120px);
+      padding-right: 6px;
+    }
+
+    .closeBtn {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 980px) {
+      .reviewSummary {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 980px) {
       .heroGrid,
       .priceGrid,
@@ -393,6 +666,7 @@
       <a href="#home" class="brand">Ku's Laundromat</a>
       <nav class="navLinks" aria-label="Main navigation">
         <a href="#pricing">Pricing</a>
+        <a href="#features">Amenities</a>
         <a href="#location">Location</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
@@ -406,27 +680,15 @@
       <div class="wrap heroGrid">
         <div class="heroCard">
           <div class="eyebrow">Clean. Fast. Local.</div>
-          <h1>Simple laundry service with quick access on phone and desktop.</h1>
+          <h2>Ku's Laundromat – Coin Laundry & Wash and Fold in Oakland Gardens, New York</h2>
           <p class="lead">
-            Ku's Laundromat gives customers an easy way to find your location, tap to call, check pricing, and leave feedback. This layout is built to feel clear on mobile while still looking polished on a full screen.
+            Ku's Laundromat is a full service laundromat serving Oakland Gardens and the surrounding New York area. We provide self service coin laundry, professional wash and fold service, and convenient drop-off laundry options. Our modern facility features commercial grade washers and dryers for all load sizes, from small loads to large comforters and bedding. Enjoy complimentary WiFi while you wait. Free parking available for all customers. Whether you need a quick self service wash or prefer our attendant assisted laundry service, we make doing laundry easy and convenient.
+
+            <br><br>Ku's Laundromat offers free WiFi, on site parking, a coin changer, an on site attendant, and RV friendly access, making it a well equipped option for residents in Oakland Gardens, New York.
           </p>
           <div class="heroActions">
             <a class="cta ctaPrimary" href="tel:+17183011991">Tap to Call</a>
             <a class="cta ctaSecondary" href="#location">Get Directions</a>
-          </div>
-          <div class="stats">
-            <div class="stat">
-              <strong>Phone friendly</strong>
-              <span>Large buttons and clean sections for fast use on smaller screens.</span>
-            </div>
-            <div class="stat">
-              <strong>Easy to update</strong>
-              <span>Address, phone, pricing, and reviews can all be edited in one file.</span>
-            </div>
-            <div class="stat">
-              <strong>Built for trust</strong>
-              <span>Clear contact info, map, and customer feedback all in one place.</span>
-            </div>
           </div>
         </div>
 
@@ -437,22 +699,27 @@
           </div>
           <div class="infoRow">
             <span class="label">Address</span>
-            <span class="value">78 33 Springfield Blvd, Oakland Gardens, NY 11364</span>
+            <span class="value">7833 Springfield Blvd, Oakland Gardens, NY 11364</span>
           </div>
           <div class="infoRow">
             <span class="label">Phone</span>
-            <a class="value" href="tel:+17183011991">+1 718 301 1991</a>
+            <a class="value" href="tel:+17183011991">+1 (718) 301 1991</a>
           </div>
           <div class="infoRow">
             <span class="label">Hours</span>
-            <span class="value">Add your store hours here</span>
+            <div class="value">Sunday - 7:30 AM - 7:30 PM</div>
+            <div class="value">Monday - 7:30 AM - 7:30 PM</div>
+            <div class="value">Tuesday - Closed</div>
+            <div class="value">Wednesday - 7:30 AM - 7:30 PM</div>
+            <div class="value">Thursday - 7:30 AM - 7:30 PM</div>
+            <div class="value">Friday - 7:30 AM - 7:30 PM</div>
+            <div class="value">Saturday - 7:30 AM - 7:30 PM</div>
           </div>
           <div class="infoRow">
             <span class="label">Quick actions</span>
             <div class="heroActions" style="margin: 10px 0 0;">
               <a class="cta ctaPrimary" href="tel:+17183011991">Call Store</a>
-              <a class="cta ctaSecondary" href="https://www.google.com/maps/search/?api=1&query=78-33+Springfield+Blvd,+Oakland+Gardens,+NY+11364" target="_blank" rel="noreferrer">Open Map</a>
-            </div>
+              <a class="cta ctaSecondary" href="https://www.google.com/maps/search/?api=1&query=Ku%27s+Laundromat+Oakland+Gardens+NY" target="_blank" rel="noreferrer">Open Map</a>            </div>
           </div>
         </aside>
       </div>
@@ -462,7 +729,6 @@
       <div class="wrap">
         <div class="sectionHead">
           <h2>Pricing</h2>
-          <p class="sectionText">These are sample pricing cards so the page is ready now. Replace them with your real prices once you have the final list.</p>
         </div>
         <div class="priceGrid">
           <article class="priceCard">
@@ -484,25 +750,47 @@
       </div>
     </section>
 
-    <section>
+    <section id="features">
       <div class="wrap">
         <div class="sectionHead">
-          <h2>Why this layout works better</h2>
-          <p class="sectionText">The original site uses a plain directory style layout. This version keeps the same useful information but makes it easier to scan, easier to call from a phone, and easier to grow later with photos, hours, and service details.</p>
+          <div>
+            <h2>Amenities & Features</h2>
+            <p class="featureSectionText">
+              Everything you need for a smoother laundry visit, whether you are stopping in for a quick wash or dropping off a larger order.
+            </p>
+          </div>
         </div>
+
         <div class="features">
-          <div class="infoCard">
-            <h3>Fast contact access</h3>
-            <p class="tiny">The call button appears at the top and again in the main content so customers do not need to search for it.</p>
-          </div>
-          <div class="infoCard">
-            <h3>Clear location section</h3>
-            <p class="tiny">Address, directions, and the map are grouped together so visitors can act immediately.</p>
-          </div>
-          <div class="infoCard">
-            <h3>Review focused</h3>
-            <p class="tiny">The page can show selected customer comments while also sending people to your public review page.</p>
-          </div>
+          <article class="featureCard">
+            <div class="featureIcon">Wi</div>
+            <h3>Free WiFi</h3>
+            <p>Stay connected while your laundry is washing or drying.</p>
+          </article>
+
+          <article class="featureCard">
+            <div class="featureIcon">P</div>
+            <h3>Parking</h3>
+            <p>Convenient parking makes it easier to bring in larger loads.</p>
+          </article>
+
+          <article class="featureCard">
+            <div class="featureIcon">A</div>
+            <h3>Attendant On Site</h3>
+            <p>Helpful staff is available during open hours if you need assistance.</p>
+          </article>
+
+          <article class="featureCard">
+            <div class="featureIcon">C</div>
+            <h3>Coin Changer</h3>
+            <p>Quick access to change for self service machines.</p>
+          </article>
+
+          <article class="featureCard">
+            <div class="featureIcon">RV</div>
+            <h3>RV Friendly</h3>
+            <p>Accessible setup that works well for larger loads and travelers.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -511,65 +799,268 @@
       <div class="wrap">
         <div class="sectionHead">
           <h2>Location</h2>
-          <p class="sectionText">Customers can use the embedded map below or open directions directly in Google Maps.</p>
         </div>
         <div class="mapWrap">
           <iframe
             title="Ku's Laundromat map"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=78-33%20Springfield%20Blvd,%20Oakland%20Gardens,%20NY%2011364&output=embed">
+            src="https://www.google.com/maps?q=Ku's+Laundromat+Oakland+Gardens+NY&output=embed">
           </iframe>
         </div>
       </div>
     </section>
 
     <section id="reviews">
-      <div class="wrap">
-        <div class="sectionHead">
-          <h2>Reviews</h2>
-          <p class="sectionText">For a static HTML site, the best approach is usually to show selected reviews here and send visitors to a public review page to leave new feedback.</p>
-        </div>
-        <div class="reviewGrid">
-          <article class="reviewCard">
-            <div class="stars">★★★★★</div>
-            <p>Clean machines, fast service, and an easy location to get to. I liked how simple everything felt from start to finish.</p>
-            <div class="reviewName">Customer review sample</div>
-            <div class="reviewNote">Replace with a real review later</div>
-          </article>
-          <article class="reviewCard">
-            <div class="stars">★★★★★</div>
-            <p>The staff was helpful and the place felt organized. It was easy to do laundry without a long wait.</p>
-            <div class="reviewName">Customer review sample</div>
-            <div class="reviewNote">Replace with a real review later</div>
-          </article>
-          <article class="reviewCard">
-            <div class="stars">★★★★★</div>
-            <p>Good neighborhood laundromat with simple pricing and quick access. The phone button on the site made it easy to call first.</p>
-            <div class="reviewName">Customer review sample</div>
-            <div class="reviewNote">Replace with a real review later</div>
-          </article>
-        </div>
-        <div class="reviewActions">
+  <div class="wrap">
+    <div class="sectionHead">
+      <h2>Reviews</h2>
+    </div>
+
+    <div class="reviewSummary">
+      <div class="summaryCard">
+        <div class="ratingNumber" id="ratingNumber">4.7</div>
+        <div class="stars" id="summaryStars">★★★★★</div>
+        <div class="ratingMeta" id="ratingMeta">6 reviews • Most recent first</div>
+        <div class="reviewActions" style="margin-top: 0;">
           <a class="cta ctaPrimary" href="https://www.google.com/search?q=Ku%27s+Laundromat+Oakland+Gardens+NY" target="_blank" rel="noreferrer">Leave a Review</a>
-          <a class="cta ctaSecondary" href="tel:+17183011991">Call with Questions</a>
+          <button class="cta ctaSecondary" id="viewAllBtn" type="button">View All</button>
         </div>
       </div>
-    </section>
+
+      <div class="summaryCard">
+        <div class="ratingBars" id="ratingBars"></div>
+      </div>
+    </div>
+
+    <div class="reviewTopBar">
+      <div class="reviewControls">
+        <select class="reviewSelect" id="starFilter">
+          <option value="all">All ratings</option>
+          <option value="5">5 star</option>
+          <option value="4">4 star</option>
+          <option value="3">3 star</option>
+          <option value="2">2 star</option>
+          <option value="1">1 star</option>
+        </select>
+
+        <select class="reviewSelect" id="sortFilter">
+          <option value="recent">Most recent</option>
+          <option value="highest">Highest rating</option>
+          <option value="lowest">Lowest rating</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="reviewScroller" id="reviewScroller"></div>
+  </div>
+</section>
   </main>
 
   <footer class="footer" id="contact">
     <div class="wrap footerBox">
       <div>
         <strong>Ku's Laundromat</strong><br />
-        78 33 Springfield Blvd, Oakland Gardens, NY 11364<br />
-        <a href="tel:+17183011991">+1 718 301 1991</a>
+        78-33 Springfield Blvd, Oakland Gardens, NY 11364<br />
+        <a href="tel:+17183011991">+1 (718) 301 1991</a>
       </div>
       <div class="heroActions" style="margin: 0;">
         <a class="cta ctaPrimary" href="tel:+17183011991">Call Now</a>
-        <a class="cta ctaSecondary" href="https://www.google.com/maps/search/?api=1&query=78-33+Springfield+Blvd,+Oakland+Gardens,+NY+11364" target="_blank" rel="noreferrer">Directions</a>
+        <a class="cta ctaSecondary" href="https://www.google.com/maps/search/?api=1&query=Ku%27s+Laundromat+Oakland+Gardens+NY" target="_blank" rel="noreferrer">Directions</a>
       </div>
     </div>
   </footer>
+
+  <div class="modal" id="reviewModal">
+    <div class="modalBody">
+      <div class="modalHead">
+        <div class="modalTitleWrap">
+          <h3 style="margin: 0;">All Reviews</h3>
+        </div>
+        <button class="closeBtn" id="closeModalBtn" type="button">×</button>
+      </div>
+
+      <div class="modalFilters">
+        <select class="reviewSelect" id="modalStarFilter">
+          <option value="all">All ratings</option>
+          <option value="5">5 star</option>
+          <option value="4">4 star</option>
+          <option value="3">3 star</option>
+          <option value="2">2 star</option>
+          <option value="1">1 star</option>
+        </select>
+
+        <select class="reviewSelect" id="modalSortFilter">
+          <option value="recent">Most recent</option>
+          <option value="highest">Highest rating</option>
+          <option value="lowest">Lowest rating</option>
+        </select>
+      </div>
+
+      <div class="modalReviewList" id="modalReviewList"></div>
+    </div>
+  </div>
+
+  <script>
+    const reviews = [
+      {
+        name: "Maria",
+        stars: 5,
+        date: "Apr 18, 2026",
+        order: new Date("2026/04/18"),
+        text: "Very clean laundromat and the machines were easy to use. Parking made the trip simple."
+      },
+      {
+        name: "Jason",
+        stars: 5,
+        date: "Apr 15, 2026",
+        order: new Date("2026/04/15"),
+        text: "Fast wash and fold service and friendly staff. I would come back again."
+      },
+      {
+        name: "Priya",
+        stars: 4,
+        date: "Apr 10, 2026",
+        order: new Date("2026/04/10"),
+        text: "Good overall experience and the place felt organized."
+      },
+      {
+        name: "Daniel",
+        stars: 5,
+        date: "Mar 29, 2026",
+        order: new Date("2026/03/29"),
+        text: "Large machines worked well for bedding and bigger loads."
+      },
+      {
+        name: "Chris",
+        stars: 3,
+        date: "Mar 09, 2026",
+        order: new Date("2026/03/09"),
+        text: "Laundry came out fine, though I would have liked a shorter wait that day."
+      },
+      {
+        name: "Nina",
+        stars: 4,
+        date: "Feb 24, 2026",
+        order: new Date("2026/02/24"),
+        text: "Reliable and convenient. The open map button on the site is useful."
+      }
+    ];
+
+    const reviewScroller = document.getElementById("reviewScroller");
+    const modalReviewList = document.getElementById("modalReviewList");
+    const ratingNumber = document.getElementById("ratingNumber");
+    const ratingMeta = document.getElementById("ratingMeta");
+    const ratingBars = document.getElementById("ratingBars");
+    const starFilter = document.getElementById("starFilter");
+    const sortFilter = document.getElementById("sortFilter");
+    const modalStarFilter = document.getElementById("modalStarFilter");
+    const modalSortFilter = document.getElementById("modalSortFilter");
+    const viewAllBtn = document.getElementById("viewAllBtn");
+    const reviewModal = document.getElementById("reviewModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    function makeStars(count) {
+      return "★".repeat(count) + "☆".repeat(5 - count);
+    }
+
+    function getFilteredReviews(starValue = starFilter.value, sortValue = sortFilter.value) {
+      let result = [...reviews];
+
+      if (starValue !== "all") {
+        result = result.filter(review => review.stars === Number(starValue));
+      }
+
+      if (sortValue === "highest") {
+        result.sort((a, b) => b.stars - a.stars || b.order - a.order);
+      } else if (sortValue === "lowest") {
+        result.sort((a, b) => a.stars - b.stars || b.order - a.order);
+      } else {
+        result.sort((a, b) => b.order - a.order);
+      }
+
+      return result;
+    }
+
+    function buildReviewCard(review) {
+      return `
+        <article class="reviewCard">
+          <div>
+            <div class="stars">${makeStars(review.stars)}</div>
+            <div class="reviewName">${review.name}</div>
+            <div class="reviewDate">${review.date}</div>
+            <p class="reviewText">${review.text}</p>
+          </div>
+          <div class="reviewFooter">${review.stars}.0 out of 5</div>
+        </article>
+      `;
+    }
+
+    function renderSummary() {
+      const average = reviews.reduce((sum, review) => sum + review.stars, 0) / reviews.length;
+      ratingNumber.textContent = average.toFixed(1);
+      ratingMeta.textContent = `${reviews.length} reviews • Most recent first`;
+
+      const counts = {5: 0, 4: 0, 3: 0, 2: 0, 1: 0};
+      reviews.forEach(review => counts[review.stars]++);
+
+      ratingBars.innerHTML = "";
+      [5, 4, 3, 2, 1].forEach(star => {
+        const percent = Math.round((counts[star] / reviews.length) * 100);
+        ratingBars.innerHTML += `
+          <div class="ratingBarRow">
+            <span>${star} star</span>
+            <div class="ratingBarTrack">
+              <div class="ratingBarFill" style="width: ${percent}%"></div>
+            </div>
+            <span>${counts[star]}</span>
+          </div>
+        `;
+      });
+    }
+
+    function renderReviews() {
+      const filtered = getFilteredReviews(starFilter.value, sortFilter.value);
+      const modalFiltered = getFilteredReviews(modalStarFilter.value, modalSortFilter.value);
+      const preview = filtered.slice(0, 8);
+
+      reviewScroller.innerHTML = preview.map(buildReviewCard).join("");
+      modalReviewList.innerHTML = modalFiltered.map(buildReviewCard).join("");
+
+      if (preview.length === 0) {
+        reviewScroller.innerHTML = `<article class="reviewCard"><p class="reviewText">No reviews match this filter.</p></article>`;
+      }
+
+      if (modalFiltered.length === 0) {
+        modalReviewList.innerHTML = `<article class="reviewCard"><p class="reviewText">No reviews match this filter.</p></article>`;
+      }
+    }
+
+    starFilter.addEventListener("change", renderReviews);
+    sortFilter.addEventListener("change", renderReviews);
+    modalStarFilter.addEventListener("change", renderReviews);
+    modalSortFilter.addEventListener("change", renderReviews);
+
+    viewAllBtn.addEventListener("click", function () {
+      reviewModal.classList.add("open");
+      modalStarFilter.value = starFilter.value;
+      modalSortFilter.value = sortFilter.value;
+      renderReviews();
+    });
+
+    closeModalBtn.addEventListener("click", function () {
+      reviewModal.classList.remove("open");
+    });
+
+    reviewModal.addEventListener("click", function (event) {
+      if (event.target === reviewModal) {
+        reviewModal.classList.remove("open");
+      }
+    });
+
+    renderSummary();
+    renderReviews();
+  </script>
+
 </body>
 </html>
