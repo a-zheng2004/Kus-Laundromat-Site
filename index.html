@@ -97,6 +97,26 @@
       color: #ffffff;
     }
 
+    .hoursList {
+      display: grid;
+      gap: 8px;
+    }
+
+    .hoursItem {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hoursDay {
+      font-weight: 700;
+    }
+
+    .hoursTime {
+      font-weight: 700;
+    }
+
     .cta {
       display: inline-flex;
       align-items: center;
@@ -713,13 +733,37 @@
           </div>
           <div class="infoRow">
             <span class="label">Hours</span>
-            <div class="value">Sunday - 7:30 AM - 7:30 PM</div>
-            <div class="value">Monday - 7:30 AM - 7:30 PM</div>
-            <div class="value">Tuesday - Closed</div>
-            <div class="value">Wednesday - 7:30 AM - 7:30 PM</div>
-            <div class="value">Thursday - 7:30 AM - 7:30 PM</div>
-            <div class="value">Friday - 7:30 AM - 7:30 PM</div>
-            <div class="value">Saturday - 7:30 AM - 7:30 PM</div>
+
+            <div class="hoursList">
+              <div class="hoursItem">
+                <span class="hoursDay">Sunday</span>
+                <span class="hoursTime">7:30 AM to 7:30 PM</span>
+              </div>
+              <div class="hoursItem">
+                <span class="hoursDay">Monday</span>
+                <span class="hoursTime">7:30 AM to 7:30 PM</span>
+              </div>
+              <div class="hoursItem">
+                <span class="hoursDay">Tuesday</span>
+                <span class="hoursTime">Closed</span>
+              </div>
+              <div class="hoursItem">
+                <span class="hoursDay">Wednesday</span>
+                <span class="hoursTime">7:30 AM to 7:30 PM</span>
+              </div>
+              <div class="hoursItem">
+                <span class="hoursDay">Thursday</span>
+                <span class="hoursTime">7:30 AM to 7:30 PM</span>
+              </div>
+              <div class="hoursItem">
+                <span class="hoursDay">Friday</span>
+                <span class="hoursTime">7:30 AM to 7:30 PM</span>
+              </div>
+              <div class="hoursItem">
+                <span class="hoursDay">Saturday</span>
+                <span class="hoursTime">7:30 AM to 7:30 PM</span>
+              </div>
+            </div>
           </div>
           <div class="infoRow">
             <span class="label">Quick actions</span>
@@ -867,7 +911,7 @@
     <div class="wrap footerBox">
       <div>
         <strong>Ku's Laundromat</strong><br />
-        7833 Springfield Blvd, Oakland Gardens, NY 11364<br />
+        78-33 Springfield Blvd, Oakland Gardens, NY 11364<br />
         <a href="tel:+17183011991">+1 (718) 301 1991</a>
       </div>
       <div class="heroActions" style="margin: 0;">
