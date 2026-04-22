@@ -93,6 +93,10 @@
       font-size: 0.96rem;
     }
 
+    .navLinks .ctaPrimary {
+      color: #ffffff;
+    }
+
     .cta {
       display: inline-flex;
       align-items: center;
@@ -108,12 +112,14 @@
 
     .ctaPrimary {
       background: var(--brand);
-      color: #fff;
+      color: #ffffff;
+      border: 2px solid var(--brandDark);
       box-shadow: var(--shadow);
     }
 
     .ctaPrimary:hover {
       background: var(--brandDark);
+      border-color: var(--brandDark);
     }
 
     .ctaSecondary {
@@ -670,7 +676,7 @@
         <a href="#location">Location</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
-        <a class="cta ctaSecondary" href="tel:+17183011991">Call Now</a>
+        <a class="cta ctaPrimary" href="tel:+17183011991">Call Now</a>
       </nav>
     </div>
   </header>
